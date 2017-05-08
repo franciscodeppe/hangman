@@ -1,0 +1,36 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.row {
+  margin: auto;
+  margin-top: 25px;
+  text-align: center;
+}
+.row img {
+  text-align: center;
+  width: 200px;
+  margin: auto;
+}
+
+.col-md-4 {
+  border: 1px solid black;
+  text-align: center;
+  padding: 25px;
+}
+
+.left {
+  height: 100%;
+  width: 300px;
+}
+
+.right {
+  height: 100%;
+  width: 300px;
+}
