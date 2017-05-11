@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="javascript" href="assets/javascript/game.js">
+
 
   <title>Document</title>
 </head>
@@ -26,9 +26,9 @@
         </div>
 
         <div class="row" info>
-          <h2>Info</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-        </div> 
+          <h2>Word</h2>
+          <p id="answerBlanks"> :_ - _ - _ - _ - _ - _ - _: </p>
+        </div>
       </div>
 
       <div class="col-md-4 right center-block">
@@ -38,6 +38,22 @@
     </div>
 
   </div>
+  <script>
+    var wordBank = ["foo fighters", "metallica", "tool", "jimi hendrix", "nirvana", ]
+
+    var guesses = 0
+
+    var word = wordBank[Math.floor(Math.random() * wordBank.length)]
+
+    console.log(word)
+
+    var brokenDown = list(word)
+    console.log(brokenDown)
+
+    console.log(brokenDown.length)
+
+    var numBlanks = brokenDown.length
+  </script>
 </body>
 
 </html>
