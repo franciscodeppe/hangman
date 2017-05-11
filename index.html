@@ -44,15 +44,14 @@
     var guesses = 0
 
     var word = wordBank[Math.floor(Math.random() * wordBank.length)]
-
     console.log(word)
 
-    var brokenDown = list(word)
+    var brokenDown = word.split("");
     console.log(brokenDown)
 
-    console.log(brokenDown.length)
-
     var numBlanks = brokenDown.length
+    console.log(numBlanks)
+
   </script>
 </body>
 
