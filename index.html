@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 
   <title>Document</title>
@@ -27,7 +28,7 @@
 
         <div class="row" info>
           <h2>Word</h2>
-          <p id="answerBlanks"> :_ - _ - _ - _ - _ - _ - _: </p>
+          <p id="answerBlanks"></p>
         </div>
       </div>
 
@@ -51,6 +52,12 @@
 
     var numBlanks = brokenDown.length
     console.log(numBlanks)
+    var spaces = " __ "
+
+    for (var i = 0; i < brokenDown.length; i++) {
+      // document.getElementById("#answerBlanks").appendTo(spaces);
+      $("#answerBlanks").append(spaces)
+    }
 
   </script>
 </body>
