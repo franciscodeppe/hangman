@@ -35,8 +35,7 @@
       </div>
 
       <div class="col-md-4 right center-block">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p id="lyrics"></p>
       </div>
     </div>
 
@@ -44,56 +43,52 @@
   <script>
     var wordBank = {
       sia: "Come On, come on, turn the radio on",
-      metallica: "Horseman are drawing nearer, on leather steeds they ride",
-      tool: "",
-      beyonce: "",
-      nirvana: "",
-      santigold: "",
-      radiohead: "",
-      queen: "",
-      phantogram: "",
-      outkast: "",
-      oasis: "",
-      moby: ""
+      metallica: "Hold my breath as I wish for death, oh please God help me...",
+      tool: "black, and, white are, all I see, in my infancy...",
+      beyonce: "All the single ladies...",
+      nirvana: "Polly wants a cracker, I think I should get off her first",
+      santigold: "I can say I hope it will be worth what I give up...",
+      radiohead: "I'm a creep, I'm a weirdo, what the hell am I doing here?",
+      queen: "Fat bottom girls, you make the rocking world go round",
+      phantogram: "But I'm over that, now I'm taking you out, It's a cruel, cruel world",
+      outkast: "My baby don't mess around, Because she loves me so, and this i know for sure",
+      oasis: "Well anyway...here's Wonderwall",
+      moby: "Extreme ways are back again, Extreme places I didn't know"
     }
     // word: wordBank[Math.floor(Math.random() * wordBank.length)]
     // console.log(word)
 
-    function pickRand(wordBank) {
-      var result;
-      var count = 0;
-      for (var prop in wordBank)
-        if (Math.random() < 1 / ++count)
-          result = prop;
-      console.log(result);
+    var list = Object.keys(wordBank);
+    var word = list[Math.floor(Math.random() * list.length)];
 
-    }
-    pickRand();
-
+    // appened to #lyrics here
 
     var guesses = 0
-
-
 
     var brokenDown = word.split("");
     console.log(brokenDown)
 
-    $("#answerReveal").append(brokenDown)
-
-    var numBlanks = brokenDown.length
-    console.log(numBlanks)
-    var spaces = " __ "
 
 
 
-    for (var i = 0; i < brokenDown.length; i++) {
-      // document.getElementById("#answerBlanks").appendTo(spaces);
-      $("#answerBlanks").append(spaces)
 
-    };
+    // var numBlanks = brokenDown.length
+    // console.log(numBlanks)
+    // var spaces = " __ "
+    // for (var i = 0; i < brokenDown.length; i++) {
+    //   // document.getElementById("#answerBlanks").appendTo(spaces);
+    //   $("#answerBlanks").append(spaces)
+    //
+    // };
 
     document.onkeyup = function(event) {
       var input = event.key;
+
+      console.log(event.key)
+
+      if (event.key === brokenDown.indexOf()) {
+        console.log("Match!")
+      }
 
 
     };
