@@ -23,19 +23,20 @@
     <div class="row">
       <div class="col-md-4 left center-block">
         <div class="row">
-          <img src="" class="bandpic" alt="">
+
         </div>
 
         <div class="row" info>
           <h2>Word</h2>
           <p id="answerReveal"></p>
-          <p id="answerBlanks"></p>
+          <p id="lyrics"></p>
 
         </div>
       </div>
 
       <div class="col-md-4 right center-block">
-        <p id="lyrics"></p>
+        <p id="answerBlanks"></p>
+
       </div>
     </div>
 
@@ -68,29 +69,27 @@
     var brokenDown = word.split("");
     console.log(brokenDown)
 
-
-
-
-
-    // var numBlanks = brokenDown.length
-    // console.log(numBlanks)
-    // var spaces = " __ "
-    // for (var i = 0; i < brokenDown.length; i++) {
-    //   // document.getElementById("#answerBlanks").appendTo(spaces);
-    //   $("#answerBlanks").append(spaces)
-    //
-    // };
+    var numBlanks = brokenDown.length
+    console.log(numBlanks)
+    var spaces = " __ "
+    for (var i = 0; i < brokenDown.length; i++) {
+      // document.getElementById("#answerBlanks").appendTo(spaces);
+      $("#answerBlanks").append(spaces)
+    };
 
     document.onkeyup = function(event) {
       var input = event.key;
 
-      console.log(event.key)
-
-      if (event.key === brokenDown.indexOf()) {
+      if (brokenDown.indexOf(input) > -1) {
         console.log("Match!")
-      }
 
+        for (var i = 0; i < brokenDown.length; i++) {
 
+          $("#answerReveal").append(event.key[i])
+          
+
+        };
+      };
     };
   </script>
 </body>
