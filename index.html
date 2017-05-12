@@ -57,8 +57,17 @@
     for (var i = 0; i < brokenDown.length; i++) {
       // document.getElementById("#answerBlanks").appendTo(spaces);
       $("#answerBlanks").append(spaces)
-    }
+    };
 
+    document.onkeyup = function(event) {
+      var input = event.key;
+
+      console.log(input)
+
+      if (input.indexOf(brokenDown) === true) {
+        console.log("works")
+      };
+    };
   </script>
 </body>
 

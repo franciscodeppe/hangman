@@ -21,5 +21,8 @@ var wordBank = ["foo fighters", "metallica", "tool", "jimi hendrix", "nirvana",]
   for (var i = 0; i < numBlanks; i++) {
 
     getElementById("answerBlanks")
+
+    document.onkeyup = function(event) {
+      var input = event.key;
   }
 }
