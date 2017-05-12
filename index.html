@@ -28,7 +28,9 @@
 
         <div class="row" info>
           <h2>Word</h2>
+          <p id="answerReveal"></p>
           <p id="answerBlanks"></p>
+
         </div>
       </div>
 
@@ -40,33 +42,60 @@
 
   </div>
   <script>
-    var wordBank = ["foo fighters", "metallica", "tool", "jimi hendrix", "nirvana", ]
+    var wordBank = {
+      sia: "Come On, come on, turn the radio on",
+      metallica: "Horseman are drawing nearer, on leather steeds they ride",
+      tool: "",
+      beyonce: "",
+      nirvana: "",
+      santigold: "",
+      radiohead: "",
+      queen: "",
+      phantogram: "",
+      outkast: "",
+      oasis: "",
+      moby: ""
+    }
+    // word: wordBank[Math.floor(Math.random() * wordBank.length)]
+    // console.log(word)
+
+    function pickRand(wordBank) {
+      var result;
+      var count = 0;
+      for (var prop in wordBank)
+        if (Math.random() < 1 / ++count)
+          result = prop;
+      console.log(result);
+
+    }
+    pickRand();
+
 
     var guesses = 0
 
-    var word = wordBank[Math.floor(Math.random() * wordBank.length)]
-    console.log(word)
+
 
     var brokenDown = word.split("");
     console.log(brokenDown)
+
+    $("#answerReveal").append(brokenDown)
 
     var numBlanks = brokenDown.length
     console.log(numBlanks)
     var spaces = " __ "
 
+
+
     for (var i = 0; i < brokenDown.length; i++) {
       // document.getElementById("#answerBlanks").appendTo(spaces);
       $("#answerBlanks").append(spaces)
+
     };
 
     document.onkeyup = function(event) {
       var input = event.key;
 
-      console.log(input)
 
-      if (input.indexOf(brokenDown) === true) {
-        console.log("works")
-      };
     };
   </script>
 </body>
