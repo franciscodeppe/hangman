@@ -63,7 +63,8 @@
     var word = list[Math.floor(Math.random() * list.length)];
 
     // appened to #lyrics here
-
+    console.log(wordBank[word]);
+    $('#lyrics').append(wordBank[word])
     var guesses = 0
 
     var brokenDown = word.split("");
@@ -71,11 +72,14 @@
 
     var numBlanks = brokenDown.length
     console.log(numBlanks)
+
+    var blankWord = []
     var spaces = " __ "
     for (var i = 0; i < brokenDown.length; i++) {
-      // document.getElementById("#answerBlanks").appendTo(spaces);
-      $("#answerBlanks").append(spaces)
+      blankWord.push(spaces)
     };
+
+    $("#answerBlanks").append(blankWord)
 
     document.onkeyup = function(event) {
       var input = event.key;
@@ -83,14 +87,13 @@
       if (brokenDown.indexOf(input) > -1) {
         console.log("Match!")
 
-        for (var i = 0; i < brokenDown.length; i++) {
+        blankWord.splice(i,1, input)
 
-          $("#answerReveal").append(event.key[i])
-          
+        $("#answerBlanks").replaceWith(blankWord)
 
-        };
       };
     };
+    // };
   </script>
 </body>
 
