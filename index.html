@@ -79,20 +79,17 @@
       blankWord.push(spaces)
     };
 
-    $("#answerBlanks").append(blankWord)
-
     document.onkeyup = function(event) {
       var input = event.key;
-
-      if (brokenDown.indexOf(input) > -1) {
-        console.log("Match!")
-
-        blankWord.splice(i,1, input)
-
-        $("#answerBlanks").replaceWith(blankWord)
-
+      for (var i = 0; i < brokenDown.length; i++) {
+        if (input === brokenDown[i]) {
+          console.log("Match!")
+          blankWord.splice(i, 1, input)
+        };
       };
+
     };
+    $("#answerBlanks").append(blankWord)
     // };
   </script>
 </body>
