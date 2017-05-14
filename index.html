@@ -33,12 +33,16 @@
 
         </div>
       </div>
-
+    </div>
+    <div class="row">
       <div class="col-md-4 right center-block">
         <p id="answerBlanks"></p>
+        <p id="guesses"></p>
+        <p id="wins"></p>
 
       </div>
     </div>
+    <p>If you lose, refresh the page to begin again!</p>
 
   </div>
   <script>
@@ -56,41 +60,129 @@
       oasis: "Well anyway...here's Wonderwall",
       moby: "Extreme ways are back again, Extreme places I didn't know"
     }
-    // word: wordBank[Math.floor(Math.random() * wordBank.length)]
-    // console.log(word)
 
-    var list = Object.keys(wordBank);
-    var word = list[Math.floor(Math.random() * list.length)];
 
-    // appened to #lyrics here
-    console.log(wordBank[word]);
-    $('#lyrics').append(wordBank[word])
-    var guesses = 0
+    $('document').ready(function() {
+      var list = Object.keys(wordBank);
+      var word = "";
+      var guesses = 10;
+      var wins = 1;
+      var brokenDown = "";
+      var blankWord = [];
 
-    var brokenDown = word.split("");
-    console.log(brokenDown)
+      pickWord();
 
-    var numBlanks = brokenDown.length
-    console.log(numBlanks)
+      function pickWord() {
+        word = list[Math.floor(Math.random() * list.length)];
+        guesses = 10;
+        $('#lyrics').html(wordBank[word]);
+        $("#guesses").html("Guesses: " + guesses);
+        $("#answerBlanks").text("");
 
-    var blankWord = []
-    var spaces = " __ "
-    for (var i = 0; i < brokenDown.length; i++) {
-      blankWord.push(spaces)
-    };
+        brokenDown = word.split("");
+        console.log(brokenDown);
 
-    document.onkeyup = function(event) {
-      var input = event.key;
-      for (var i = 0; i < brokenDown.length; i++) {
-        if (input === brokenDown[i]) {
-          console.log("Match!")
-          blankWord.splice(i, 1, input)
+        var numBlanks = brokenDown.length;
+        console.log(numBlanks);
+        blankWord = [];
+        var populate;
+        var spaces = " __ ";
+        for (var i = 0; i < brokenDown.length; i++) {
+          blankWord.push(spaces);
+        }
+        $("#answerBlanks").html(blankWord)
+      }
+
+      document.onkeyup = function(event) {
+        var input = event.key;
+        for (var i = 0; i < brokenDown.length; i++) {
+
+          if (input === brokenDown[i]) {
+            console.log("Match!");
+            blankWord.splice(i, 1, input);
+            $("#answerBlanks").html(blankWord);
+          }
+        }
+
+        if ((brokenDown).indexOf(input) === -1) {
+          guesses--;
+          $("#guesses").html("Guesses: " + guesses);
         };
-      };
+        if (guesses === 0) {
+          alert("you lose")
+        }
 
-    };
-    $("#answerBlanks").append(blankWord)
-    // };
+        var result = true;
+        for (var i = 0; i < brokenDown.length; i++) {
+
+          if (brokenDown[i] !== blankWord[i]) {
+            result = false;
+            break;
+          }
+
+        }
+        if (result) {
+          alert("Score! You guessed " + word)
+          pickWord();
+          $("#wins").html("wins: " + wins++);
+
+        }
+        if (wins === 10) {
+          alert('You win! Well Done! You know your music!')
+        }
+      }
+
+
+      // if (word === "metallica") {
+      //   $('<img/>').attr('src', 'http://img.wennermedia.com/social/rs-sia-c81d9571-82aa-4e27-94a9-5cce0c742403.jpg')
+      //     .appendTo('#img');
+      // }
+      // Background Image- updater unfinished
+      // if (word === "metallica") {
+      //
+      //   http: //img.wennermedia.com/social/rs-metallica-1d77d17a-78a8-4da2-b52a-5cc734e8f2db.jpg">")
+      // }
+      // if (word === "tool") {
+      //
+      //   https: //i.ytimg.com/vi/9vluBFWv4mE/maxresdefault.jpg">")
+      // }
+      // if (word === "beyonce") {
+      //
+      //   http: //www.billboard.com/files/styles/article_main_image/public/media/beyonce-tour-bb5-topline-2016-billboard-650.jpg">")
+      // }
+      // if (word === "nirvana") {
+      //
+      //   http: //www.alternativenation.net/wp-content/uploads/2016/04/nirvana93.jpg" alt="">")
+      // }
+      // if (word === "santigold") {
+      //   z
+      //   https: //media.npr.org/assets/img/2016/02/16/santigold-hi-res-press-photo_christelle-de-castro-1_wide-695a691a6dfa80be44be5a10fb1a026c86c7342c.jpg?s=1400" alt="">")
+      // }
+      // if (word === "radiohead") {
+      //
+      //   https: //static.rukkus.com/images/performer/headshots/radiohead-tickets.jpg.870x570_q70_crop-smart_upscale.jpg" alt="">")
+      // }
+      // if (word === "queen") {
+      //
+      //   https: //queenphotos.files.wordpress.com/2014/04/queen-ii-photo-session-in-late-1973.jpg" alt="">")
+      // }
+      // if (word === "phantogram") {
+      //
+      //   http: //first-avenue.com/sites/default/files/images/events/PhantogrambyTimothySaccenti.jpg" alt="">")
+      // }
+      // if (word === "outkast") {
+      //
+      //   https: //media.npr.org/assets/img/2015/12/17/480935671_wide-ef4e68035679af56e464352b86bd75d4d26e1ee7.jpg?s=1400" alt="">")
+      // }
+      // if (word === "oasis") {
+      //
+      //   http: //www.screendaily.com/pictures/636xAny/8/1/0/1228810_Oasis.jpg" alt="">")
+      // }
+      // if (word === "moby") {
+      //
+      //   https: //damnuglyphotography.files.wordpress.com/2011/07/moby.jpeg" alt="">")
+      // }
+    });
   </script>
 </body>
 
